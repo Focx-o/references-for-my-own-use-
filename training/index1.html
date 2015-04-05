@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript'>
+
+function formValidator(){
+	// Make quick references to our fields
+	var form_id = document.getElementById('form_id');
+	var vendor_id = document.getElementById('vendor_id');
+	var firstname = document.getElementById('firstname');
+	var lastname = document.getElementById('lastname');
+	var addr = document.getElementById('addr');
+	var city = document.getElementById('city');
+	var state = document.getElementById('state');
+	var zip = document.getElementById('zip');
+	var country = document.getElementById('country');
+	var email = document.getElementById('email');
+	var day_phone = document.getElementById('day_phone');
+	var evening_phone = document.getElementById('evening_phone');	
+	var hs_grad_year = document.getElementById('hs_grad_year');
+	var last_degree_completed = document.getElementById('last_degree_completed');
+	var Program = document.getElementById('Program');
+	var ip = document.getElementById('ip');
+	
+	
+	
+	
+	
+	
+	
+	
+	// Check each input in the order that it appears in the form!
+if(isAlphanumeric(form_id, "Please enter Form ID"))
+{	
+	if(isAlphanumeric(vendor_id, "Please enter Vendor ID"))
+	{
+		if(isAlphabet(firstname, "Please enter your first name"))
+		{	
+			if(isAlphabet(lastname, "Please enter your last name"))
+			{
+				
+				if(isAlphanumeric(addr, "Please enter your address"))
+						{	
+							if(isAlphabet(city, "Please enter your city"))
+							{
+							if(madeSelection(state, "Please Choose a State"))
+							{
+							if(lengthRestriction(zip, 5, 5))
+							{
+								if(madeSelection1(country, "Please Choose a country"))
+								{
+									if(emailValidator(email, "Please enter a valid email address"))
+									{
+										if(isNumeric(day_phone, "Please enter Day Phone Number"))
+										{				
+											if(isNumeric(evening_phone, "Please enter Evening Phone Number"))
+											{		
+												if(madeSelection2(hs_grad_year, "Please Choose a Graduation Year"))
+												{
+													if(isAlphabet(last_degree_completed, "Please enter the name of your last degree"))
+													{
+														if(madeSelection3(program, "Please Choose a Program"))
+														{
+														
+															if(isNumeric(ip, "Please enter the IP address"))
+															{
+																return true;
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}	
+						}
+					}
+				}
+				
+			}
+		}	
+	}
+}	
+	
+	return false;
+	
+}
+
+function notEmpty(elem, helperMsg){
+	if(elem.value.length == 0){
+		alert(helperMsg);
+		elem.focus(); // set the focus to this input
+		return false;
+	}
+	return true;
+}
+
+function isNumeric(elem, helperMsg){
+	var numericExpression = /^[0-9]+$/;
+	if(elem.value.match(numericExpression)){
+		return true;
+	}else{
+		alert(helperMsg);
+		elem.focus();
+		return false;
+	}
+}
+
+function isAlphabet(elem, helperMsg){
+	var alphaExp = /^[a-zA-Z]+$/;
+	if(elem.value.match(alphaExp)){
+		return true;
+	}else{
+		alert(helperMsg);
+		elem.focus();
+		return false;
+	}
+}
+
+function isAlphanumeric(elem, helperMsg){
+	var alphaExp = /^[0-9a-zA-Z]+$/;
+	if(elem.value.match(alphaExp)){
+		return true;
+	}else{
+		alert(helperMsg);
+		elem.focus();
+		return false;
+	}
+}
+
+function lengthRestriction(elem, min, max){
+	var uInput = elem.value;
+	if(uInput.length >= min && uInput.length <= max){
+		return true;
+	}else{
+		alert("Please enter between " +min+ " and " +max+ " characters");
+		elem.focus();
+		return false;
+	}
+}
+
+function lengthRestriction1(elem, min, max){
+	var uInput = elem.value;
+	if(uInput.length >= min && uInput.length <= max){
+		return true;
+	}else{
+		alert("Please enter between " +max+ " characters");
+		elem.focus();
+		return false;
+	}
+}
+
+
+function madeSelection(elem, helperMsg){
+	if(elem.value == "Submission Value"){
+		alert(helperMsg);
+		elem.focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+function madeSelection1(elem, helperMsg){
+	if(elem.value == "Submission Value1"){
+		alert(helperMsg);
+		elem.focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+function madeSelection2(elem, helperMsg){
+	if(elem.value == "Submission Value2"){
+		alert(helperMsg);
+		elem.focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+function madeSelection3(elem, helperMsg){
+	if(elem.value == "Submission Value3"){
+		alert(helperMsg);
+		elem.focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+
+
+function emailValidator(elem, helperMsg){
+	var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+	if(elem.value.match(emailExp)){
+		return true;
+	}else{
+		alert(helperMsg);
+		elem.focus();
+		return false;
+	}
+}
+</script>
+</head>
+
+<body>
+<section id="container">
+<form onsubmit='return formValidator()' >
+Form ID :* <input type='text' style="margin:0 0 0 69px;" id='form_id' /><br />
+Vendor ID :* <input type='text' style="margin:0 0 0 55px;" id='vendor_id' /><br />
+Affiliate ID : <input type='text' style="margin:0 0 0 60px;" id='affiliate_id' /><br />
+First Name:* <input type='text' style="margin:0 0 0 54px;" id='firstname' /><br />
+Last Name:* <input type='text' style="margin:0 0 0 55px;" id='lastname' /><br />
+Address :* <input type='text' style="margin:0 0 0 68px;" id='addr' /><br />
+City :* <input type='text' style="margin:0 0 0 99px;" id='city' /><br />
+State:* 
+<select id='state' style="margin:0 0 0 94px;">
+	<option value="Submission Value">(Display Value)</option>
+	<option value="AL">Alabama</option>
+	<option value="AK">Alaska</option>
+	<option value="AZ">Arizona</option>
+	<option value="AR">Arkansas</option>
+	<option value="CA">California</option>
+	<option value="CO">Colorado</option>
+	<option value="CT">Connecticut</option>
+	<option value="DE">Delaware</option>
+	<option value="DC">District of Columbia</option>
+	<option value="FL">Florida</option>
+	<option value="GA">Georgia</option>
+	<option value="HI">Hawaii</option>
+	<option value="ID">Idaho</option>
+	<option value="IL">Illinois</option>
+	<option value="IN">Indiana</option>
+	<option value="IA">Iowa</option>
+	<option value="KS">Kansas</option>
+	<option value="KY">Kentucky</option>
+	<option value="LA">Louisiana</option>
+	<option value="ME">Maine</option>
+	<option value="MD">Maryland</option>
+	<option value="MA">Massachusetts</option>
+	<option value="MI">Michigan</option>
+	<option value="MN">Minnesota</option>
+	<option value="MS">Mississippi</option>
+	<option value="MO">Missouri</option>
+	<option value="MT">Montana</option>
+	<option value="NE">Nebraska</option>
+	<option value="NV">Nevada</option>
+	<option value="NH">New Hampshire</option>
+	<option value="NJ">New Jersey</option>
+	<option value="NM">New Mexico</option>
+	<option value="NY">New York</option>
+	<option value="NC">North Carolina</option>
+	<option value="ND">North Dakota</option>
+	<option value="OH">Ohio</option>
+	<option value="OK">Oklahoma</option>
+	<option value="OR">Oregon</option>
+	<option value="PA">Pennsylvania</option>
+	<option value="RI">Rhode Island</option>
+	<option value="SC">South Carolina</option>
+	<option value="SD">South Dakota</option>
+	<option value="TN">Tennessee</option>
+	<option value="TX">Texas</option>
+	<option value="UT">Utah</option>
+	<option value="VT">Vermont</option>
+	<option value="VA">Virginia</option>
+	<option value="WA">Washington</option>
+	<option value="WV">West Virginia</option>
+	<option value="WI">Wisconsin</option>
+	<option value="WY">Wyoming</option>
+</select>
+<br />
+Zip Code:* <input type='text' style="margin:0 0 0 68px;" id='zip' /><br />
+Country :* 
+<select id='country' style="margin:0 0 0 71px;">
+	<option value="Submission Value1">(Display Value)</option>
+	<option value="US">United States of America</option>
+</select>
+<br />
+Email :* <input type='text' style="margin:0 0 0 90px;" id='email' /><br />
+Day Phone :* <input type='text' style="margin:0 0 0 52px;" id='day_phone' /><br />
+Evening Phone :*<input type='text' style="margin:0 0 0 22px;" id='evening_phone' /><br />
+High School Graduation Year :*
+<select id='hs_grad_year' style="margin:0 0 0 10px;">
+	<option value="Submission Value2">(Display Value)</option>
+	<option value="HS">High School Diploma</option>
+	<option value="SOMECOLLEGE">Some College</option>
+	<option value="ASSOCIATES">Associate's Degree</option>
+	<option value="BACHELORS">Bachelors Degree</option>
+	<option value="MASTERS">Masters Degree</option>
+	<option value="DOCTORATE">Doctorate Degree</option>
+</select><br />
+Last Degree Completed :* <input type='text' style="margin:0 0 0 10px;" id='last_degree_completed' /><br />
+Program of interest :*
+<select id='program' style="margin:0 0 0 40px;" >
+	<option value="Submission Value3">(Display Value)</option>
+	<option value="Associates - Accounting">Associates - Accounting</option>
+	<option value="Associates - Business">Associates - Business</option>
+	<option value="Associates - Computer Science">Associates - Computer Science</option>
+	<option value="Associates - Criminal Justice">Associates - Criminal Justice</option>
+	<option value="Associates - Health Care Administration">Associates - Health Care Administration</option>
+	<option value="Associates - Information Technology (IT)">Associates - Information Technology (IT)</option>
+	<option value="Associates - Medical Office Administration">Associates - Medical Office Administration</option>
+	<option value="Associates - Paralegal & Legal Assistant">Associates - Paralegal & Legal Assistant</option>
+	<option value="Bachelors - Accounting">Bachelors - Accounting</option>
+	<option value="Bachelors - Business Administration">Bachelors - Business Administration</option>
+	<option value="Bachelors - Computer Networking">Bachelors - Computer Networking</option>
+	<option value="Bachelors - Computer Science">Bachelors - Computer Science</option>
+	<option value="Bachelors - Criminal Justice">Bachelors - Criminal Justice</option>
+	<option value="Bachelors - Health Administration">Bachelors - Health Administration</option>
+	<option value="Bachelors - Information Technology">Bachelors - Information Technology</option>
+	<option value="Bachelors - Psychology">Bachelors - Psychology</option>
+	<option value="Masters - Business Administration (MBA)">Masters - Business Administration (MBA)</option>
+	<option value="Masters - Criminal Justice">Masters - Criminal Justice</option>
+	<option value="Masters - Education">Masters - Education</option>
+	<option value="Masters - Information Systems Management">Masters - Information Systems Management</option>
+	<option value="Masters - Psychology">Masters - Psychology</option>
+</select><br />
+IP Address :* <input type='text'  style="margin:0 0 0 100px;" id='ip' /><br />
+<input type='submit' value='Submit' />
+</form>
+</section>
+</body>
+</html>
